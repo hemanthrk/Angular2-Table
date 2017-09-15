@@ -1,0 +1,23 @@
+<h1>Item List{{name}}</h1> 
+<nav>
+  <a routerLink="/relink">Relink</a
+    <a routerLink="/link">Items</a>
+    <router-outlet></router-outlet>
+</nav>
+<table id="data-table" class="table table-hover">
+    <thead>
+      <tr>
+        <th >Name<</th>
+        <th >Category</th>
+        <th >Amount</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+     <tr *ngFor="let item of items | order-by: {property: column, direction: direction}">
+     <td>{{item.name}}</td>
+     <td>{{item.category}}</td>
+     <td>{{item.amount}}</td>
+     </tr>
+    </tbody>
+  </table>
