@@ -18,7 +18,7 @@ import{AppService} from './app.service';
     </tr>
   </thead>
   <tbody>
-   <tr *ngFor="let item of items">
+   <tr *ngFor="let item of items" (click)=onSelect(item)>
    <td>{{item.name}}</td>
    <td>{{item.category}}</td>
    <td>{{item.amount}}</td>
@@ -30,6 +30,11 @@ providers: [AppService]
 
 export class ListComponent implements OnInit { 
 items:Item[];
+item:Item;
+onSelect(item:Item):void{
+    this.item = item;
+    console.log("inside on click", this, this.item)
+}
 
 constructor(private itemService:AppService){}
 
@@ -38,7 +43,7 @@ getItems():void{
 }
  ngOnInit():void{
   this.getItems();
-
+console.log("inside lifecycle hook of list", this);
  }
              
                
